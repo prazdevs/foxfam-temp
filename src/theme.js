@@ -1,9 +1,14 @@
-import { extendTheme } from '@chakra-ui/core';
+import defaultTheme from '@chakra-ui/theme';
 
-const theme = extendTheme({
+console.log(defaultTheme);
+
+const theme = {
+  ...defaultTheme,
   fonts: {
-    body: 'Quicksand'
-  }
-});
+    ...defaultTheme.fonts,
+    body: `Quicksand, ${defaultTheme.fonts.body}`,
+    heading: `Quicksand, ${defaultTheme.fonts.heading}`,
+  },
+};
 
 export default theme;

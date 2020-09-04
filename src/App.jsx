@@ -1,16 +1,17 @@
 import React from 'react';
-import { Box, Grid, Container } from '@chakra-ui/core';
-import { ColorModeSwitcher } from './ColorModeSwitcher';
-import TestComponent from './TestComponent';
-import Header from './Header';
+import { Container, Flex } from '@chakra-ui/core';
+
+import Navbar from './Navbar';
+import {ColorModeSwitcher} from './ColorModeSwitcher';
 
 function App() {
   return (
-    <Box textAlign="center" fontSize="xl">
-      <Container maxW="xl">
-        <Header />
-      </Container>
-    </Box>
+    <Container centerContent>
+      <Navbar />
+      <Flex mt="70px">
+        <ColorModeSwitcher />
+      </Flex>
+    </Container>
   );
 }
 

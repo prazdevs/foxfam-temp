@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import { Flex, Image, Box, Heading, Stack } from '@chakra-ui/core';
-import fox from './fox.svg';
+import { Box, Flex, Heading, Image, Stack } from '@chakra-ui/core';
 import { useColorModeValue } from '@chakra-ui/core';
+import React, { useState } from 'react';
+
+import fox from './fox.svg';
+import MenuButton from './MenuButton';
 import NavbarDropdown from './NavbarDropdown';
 import NavbarLink from './NavbarLink';
-import MenuButton from './MenuButton';
 
 const Header = () => {
   const [show, setShow] = useState(false);

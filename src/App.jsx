@@ -1,15 +1,15 @@
 import React from 'react';
 import { Container, Flex } from '@chakra-ui/core';
 
-import Navbar from './Navbar';
-import {ColorModeSwitcher} from './ColorModeSwitcher';
+import Navbar from './components/Navbar';
+import Routes from './Routes';
 
 function App() {
   return (
     <Container centerContent>
       <Navbar />
-      <Flex mt="70px">
-        <ColorModeSwitcher />
+      <Flex mt="55px">
+        <Routes />
       </Flex>
     </Container>
   );

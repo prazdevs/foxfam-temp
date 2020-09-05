@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Flex, Image, Box, Link, Icon, Stack } from '@chakra-ui/core';
+import { Flex, Image, Box, Heading, Stack } from '@chakra-ui/core';
 import fox from './fox.svg';
-import { FiMenu } from 'react-icons/fi';
 import { useColorModeValue } from '@chakra-ui/core';
 import NavbarDropdown from './NavbarDropdown';
+import NavbarLink from './NavbarLink';
+import MenuButton from './MenuButton';
 
 const Header = () => {
   const [show, setShow] = useState(false);
@@ -12,6 +13,7 @@ const Header = () => {
   const bgColor = useColorModeValue('gray.200', 'gray.700');
 
   const links = [
+    { label: 'home', to: '/' },
     {
       label: 'standings',
       to: 'standings',
@@ -29,37 +31,42 @@ const Header = () => {
   return (
     <Flex
       as="nav"
-      h="70px"
+      h="55px"
       w="full"
-      maxW="3xl"
+      maxW="5xl"
       justify="space-between"
       wrap="wrap"
       pos="fixed"
       bgColor={bgColor}
-      roundedBottom={{ md: 'lg' }}
+      roundedBottom={{ lg: 'lg' }}
       zIndex={2}
+      overflow={{ md: 'hidden' }}
     >
-      <Image p={2} src={fox} height="full" />
+      <Flex p={2} h="full" align="center" color="primary">
+        <Image src={fox} alt="Fox logo" h="full" />
+        <Heading ml={2}>FFL</Heading>
+      </Flex>
+      <MenuButton handleToggle={handleToggle} />
       <Box
-        display={{ base: 'flex', sm: 'none' }}
-        alignItems="center"
-        fontSize={28}
-        p={2}
-        onClick={handleToggle}
-      >
-        <Icon as={FiMenu} />
-      </Box>
-      <Box
-        display={{ base: show ? 'block' : 'none', sm: 'flex' }}
-        width={{ base: 'full', sm: 'auto' }}
+        display={{ base: show ? 'block' : 'none', md: 'flex' }}
+        width={{ base: 'full', md: 'auto' }}
         alignItems="center"
         bgColor={bgColor}
       >
-        <Stack direction={{ base: 'column', sm: 'row' }} align="center">
+        <Stack
+          direction={{ base: 'column', md: 'row' }}
+          align="center"
+          mx={4}
+          spacing={4}
+        >
           {links.map(({ label, to }) => (
-            <Link fontSize="lg" key={to} to={to}>
-              {label}
-            </Link>
+            <NavbarLink
+              fontSize="lg"
+              key={to}
+              to={to}
+              label={label}
+              closeMenu={() => setShow(false)}
+            />
           ))}
         </Stack>
         <NavbarDropdown />
